@@ -1,0 +1,19 @@
+<script>
+function computerPlay(){
+    let options= ['rock','papper','scissors'];
+    return options[Math.floor(Math.random() * 3)];
+    }
+function letsPlay(playerSelection,computerSelection){
+    let player=playerSelection.toLowerCase();
+    if(player == computerSelection){
+        return ("Its a tie !");
+        }else if (player == 'scissors' && computerSelection == 'papper' || player == 'papper' && computerSelection == 'scissors'){
+            return c("Scissors! beat Pappers!");
+        }else if (player == 'scissors' && computerSelection == 'rock' || player == 'rock' && computerSelection == 'scissors'){
+            return ("Rock beat Scissors !");
+        }else if(player == 'rock' && computerSelection == 'papper' || player == 'papper' && computerSelection == 'rock'){
+            return ("Papper beat Rock!");
+        }
+    }         
+
+</script>
