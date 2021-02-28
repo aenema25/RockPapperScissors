@@ -1,4 +1,5 @@
 <script>
+let computerPoint=0,playerPoint=0;
 function computerPlay(){
     let options= ['rock','papper','scissors'];
     return options[Math.floor(Math.random() * 3)];
@@ -6,14 +7,43 @@ function computerPlay(){
 function letsPlay(playerSelection,computerSelection){
     let player=playerSelection.toLowerCase();
     if(player == computerSelection){
-        return ("Its a tie !");
-        }else if (player == 'scissors' && computerSelection == 'papper' || player == 'papper' && computerSelection == 'scissors'){
-            return c("Scissors! beat Pappers!");
-        }else if (player == 'scissors' && computerSelection == 'rock' || player == 'rock' && computerSelection == 'scissors'){
-            return ("Rock beat Scissors !");
-        }else if(player == 'rock' && computerSelection == 'papper' || player == 'papper' && computerSelection == 'rock'){
-            return ("Papper beat Rock!");
+        console.log ("Its a tie !");
+        }else if (player == 'scissors' && computerSelection == 'papper' ){
+            console.log ("Scissors! beat Pappers! Point for you!");
+            return(playerPoint++);
+        }else if(player == 'papper' && computerSelection == 'scissors'){
+            console.log ("Scissors! beat Pappers! Point for the computer");
+            return(computerPoint++);           
+        }else if (player == 'scissors' && computerSelection == 'rock'){
+            console.log ("Rock beat Scissors ! Point for the computer");
+            return(computerPoint++);
+        }else if (player == 'rock' && computerSelection == 'scissors'){
+            console.log ("Rock beat Scissors ! Point for you!");
+            return(playerPoint++);            
+        }else if(player == 'rock' && computerSelection == 'papper'){
+            console.log("Papper beat Rock! Point for the computer!");
+            return(computerPoint++);
+        }else if(player == 'papper' && computerSelection == 'rock'){
+            console.log("Papper Beat Rock! Point for you!");
+            return(playerPoint++);
         }
-    }         
-
+    }     
+function game(){
+    console.log("Welcome to this Rock Papper Scissors game! Your be playing 5 times again the computer, best of luck!");
+    for(i=1;i<=5;i++){
+        playerSelection=prompt("Insert your option! ( Rock | Papper | Scissors )");
+        letsPlay(playerSelection,computerPlay());
+        console.log("Current score! Computer:" + computerPoint + " points | You:" + playerPoint + " points");
+    }
+    console.log("And the winner is ! ...");
+    if(playerPoint>computerPoint){
+        console.log("Congratulations ! You won!");
+    }else if (playerPoint<computerPoint){
+            console.log("Too bad :( The computer Won!");
+        }
+        else {
+            console.log("Ladies and Gentlemans, we have a tie !");
+        }
+    console.log("Thanks for playing :)");
+}
 </script>
