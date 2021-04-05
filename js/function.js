@@ -1,37 +1,43 @@
-const container = document.querySelector("#messages");
-const points = document.querySelector(".points");
-let computerPoint = 0,
-  playerPoint = 0;
+let computerPoint = 0;
+let playerPoint = 0;
 const computerPlay = () => {
-  let options = ["rock", "papper", "scissors"];
-  return options[Math.floor(Math.random() * 3)];
-}
+  let options = ["rock", "papper", "scissors", "lizard", "spock"];
+  return options[Math.floor(Math.random() * 5)]
+};
 const checkWinner = () => {
   if (computerPoint == 5) {
-    messageAdd("We Have a Winner! the computer won!");
+    alert("We Have a Winner! the computer won!");
     (playerPoint = 0), (computerPoint = 0);
+    pointCounter();
+    messageAdd("Lets Begin!");
   } else if (playerPoint == 5) {
-    messageAdd("We Have a Winner! You won!");
+    alert("We Have a Winner! You won!");
     (playerPoint = 0), (computerPoint = 0);
+    pointCounter();
+    messageAdd("Lets Begin!");
   }
-}
+};
 const messageAdd = (message) => {
-  removeLast('content')
+  removeLast("content");
   pointCounter();
-  let htmlSqueleton=`<div id="content"> ${message} </div>`
-  container.insertAdjacentHTML('beforeend',htmlSqueleton);
-}
+  let htmlSqueleton = `<div id="content"> ${message} </div>`;
+  document
+    .querySelector("#messages")
+    .insertAdjacentHTML("beforeend", htmlSqueleton);
+};
 const removeLast = (className) => {
   document.querySelectorAll("#" + className).forEach((e) => e.remove());
-}
+};
 const pointCounter = () => {
   removeLast("player");
   removeLast("computer");
-  let htmlSqueleton=`<div id="player">${playerPoint}</div><div id="computer">${computerPoint}</div>`;
-  points.insertAdjacentHTML('beforeend',htmlSqueleton)
-}
+  let htmlSqueleton = `<div id="player">${playerPoint}</div><div id="computer">${computerPoint}</div>`;
+  document
+    .querySelector(".points")
+    .insertAdjacentHTML("beforeend", htmlSqueleton);
+};
 
-function letsPlay(e) {
+const letsPlay = (e) => {
   pointCounter();
   let player = e.target.id.toLowerCase();
   if (player == computerPlay()) {
@@ -67,9 +73,80 @@ function letsPlay(e) {
     removeLast("content");
     messageAdd("Papper Beat Rock! Point for you!");
     checkWinner();
+  } else if (player == "rock" && computerPlay() == "lizard") {
+    playerPoint++;
+    removeLast("content");
+    messageAdd("Rock crushes Lizard! Point for you!");
+    checkWinner();
+  } else if (player == "lizard" && computerPlay() == "rock") {
+    playerPoint++;
+    removeLast("content");
+    messageAdd("Rock crushes Lizard! Point for the computer!");
+    checkWinner();
+  } else if (player == "lizard" && computerPlay() == "spock") {
+    playerPoint++;
+    removeLast("content");
+    messageAdd("Lizard poisons Spock! Point for you!");
+    checkWinner();
+  } else if (player == "spock" && computerPlay() == "lizard") {
+    playerPoint++;
+    removeLast("content");
+    messageAdd("Lizard poisons Spock! Point for the computer!");
+    checkWinner();
+  } else if (player == "spock" && computerPlay() == "scissors") {
+    playerPoint++;
+    removeLast("content");
+    messageAdd("Spock smashes Scissors! Point for you!");
+    checkWinner();
+  } else if (player == "scissors" && computerPlay() == "spock") {
+    playerPoint++;
+    removeLast("content");
+    messageAdd("Spock smashes Scissors! Point for the computer!");
+    checkWinner();
+  } else if (player == "scissors" && computerPlay() == "lizard") {
+    playerPoint++;
+    removeLast("content");
+    messageAdd("Scissors decapitates Lizard! Point for you!");
+    checkWinner();
+  } else if (player == "lizard" && computerPlay() == "scissors") {
+    playerPoint++;
+    removeLast("content");
+    messageAdd("Scissors decapitates Lizard! Point for the computer!");
+    checkWinner();
+  } else if (player == "lizard" && computerPlay() == "papper") {
+    playerPoint++;
+    removeLast("content");
+    messageAdd("Lizard eats Paper! Point for you!");
+    checkWinner();
+  } else if (player == "papper" && computerPlay() == "lizard") {
+    playerPoint++;
+    removeLast("content");
+    messageAdd("Lizard eats Paper! Point for the computer!");
+    checkWinner();
+  } else if (player == "papper" && computerPlay() == "spock") {
+    playerPoint++;
+    removeLast("content");
+    messageAdd("Paper disproves Spock! Point for you!");
+    checkWinner();
+  } else if (player == "spock" && computerPlay() == "papper") {
+    playerPoint++;
+    removeLast("content");
+    messageAdd("Paper disproves Spock! Point for the computer!");
+    checkWinner();
+  } else if (player == "spock" && computerPlay() == "rock") {
+    playerPoint++;
+    removeLast("content");
+    messageAdd("Spock vaporizes Rock! Point for you!");
+    checkWinner();
+  } else if (player == "rock" && computerPlay() == "spock") {
+    playerPoint++;
+    removeLast("content");
+    messageAdd("Spock vaporizes Rock! Point for the computer!");
+    checkWinner();
   }
-}
-let gameOptions=document.getElementById('selection').getElementsByTagName('button');
-Array.from(gameOptions, option => {
-    option.addEventListener('click',letsPlay);
-});
+};
+document.getElementById("rock").addEventListener("click", letsPlay);
+document.getElementById("papper").addEventListener("click", letsPlay);
+document.getElementById("scissors").addEventListener("click", letsPlay);
+document.getElementById("lizard").addEventListener("click", letsPlay);
+document.getElementById("spock").addEventListener("click", letsPlay);
