@@ -1,63 +1,423 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
 body {
-    font: 1.1em/1.7 sans-serif  !important;
-    text-align: center;
-    background-color: #ebe8e2;
-}
-.title{
-    position:fixed;
-    width:100%;
-    top:0;
-    left:0;
-    background-color: rgb(0,250,154);
-}
-.points{
-    display: grid;
-    grid-template-columns: repeat(2,2fr);
-    border: solid rgb(0,250,154) 2px;
-    border-radius: 5px;
-    width:20%;
-    height:80px;
-    margin:auto;
-    margin-top:180px;
-}
-#selection{
-    display:flex;
+    display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
-    padding-top: 40px;
+    height: 100vh;
+    background-color: #001826;
+    font-family: 'Luckiest Guy', cursive;
+    color: white;
 }
-.playernames{
-    background-color: rgb(0,250,154);
+
+.header {
+    padding: 30px;
+    font-size: 6rem;
+    text-shadow: 0px 6px 0 #212121
 }
-.names{
-    position:absolute;
-    top: 50%;
-    left:50%;
-}
-#selection img{
-    width:200px;
-}
-#selection p{
-    margin-bottom: -18px;
-}
-.option {
-    transition: .5s ease;
-}
-.option:hover{
-    -ms-transform: scale(1.5); /* IE 9 */
-    -webkit-transform: scale(1.5); /* Safari 3-8 */
-    transform: scale(1.5); 
-}
-#messages{
-    padding-top:50px;
-}
-footer{
+
+.secondHeader {
     text-align: center;
-    padding-top: 30px;
-    position:fixed;
-    bottom:0;
-    left:0;
-    width:100%;
-    background-color: rgb(0,250,154);
-    height:50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 50px;
+}
+
+.main {
+    flex-grow: 1;
+    text-align: center;
+}
+
+.enterGame {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 3rem;
+    padding: 30px;
+    animation-name: zoom-in;
+    animation-fill-mode: forwards;
+    animation-duration: 1s;
+    animation-delay: 4s;
+    opacity: 0;
+}
+
+.enterGame button {
+    font-family: 'Luckiest Guy', cursive;
+    border-radius: 10px;
+    background-color: #00074B;
+    color: white;
+    padding: 20px 20px 10px 20px;
+    font-size: 50px;
+}
+.rules {
+    display: flex;
+    flex-direction: row;    
+}
+.rules span {
+    padding:10px;
+    font-size: 40px;
+}
+.rules iframe{
+    width:280px;
+    height:500px;
+    border-radius: 20px;
+    box-shadow: rgba(0, 0, 0, 0.15) 0px 15px 25px, rgba(0, 0, 0, 0.05) 0px 5px 10px;
+}
+
+.enterGame button:hover {
+    transform: scale(1.2);
+}
+
+@keyframes zoom-in {
+    0% {
+        opacity: 0;
+    }
+
+    100% {
+        opacity: 1;
+    }
+}
+
+@keyframes zoom-in-rotated {
+    0% {
+        opacity: 1;
+        font-size: 1000px;
+
+    }
+
+    100% {
+        opacity: 1;
+        font-size: 6rem;
+
+    }
+}
+
+.firstHeader>span:nth-child(1) {
+    color: #FFA200;
+    animation-name: zoom-in;
+    animation-fill-mode: forwards;
+    animation-duration: .4s;
+    opacity: 0;
+}
+
+.firstHeader>span:nth-child(2) {
+    color: #FFFFFF;
+    animation-name: zoom-in;
+    animation-delay: 1s;
+    animation-duration: .4s;
+    animation-fill-mode: forwards;
+    opacity: 0;
+}
+
+.firstHeader>span:nth-child(3) {
+    color: #5A6D98;
+    animation-name: zoom-in;
+    animation-delay: 1.5s;
+    animation-duration: .4s;
+    animation-fill-mode: forwards;
+    opacity: 0;
+}
+
+.secondHeader>span:nth-child(1) {
+    margin-top: -30px;
+    color: #FF743F;
+    rotate: -5deg;
+    animation-name: zoom-in-rotated;
+    animation-delay: 2.5s;
+    animation-duration: .4s;
+    animation-fill-mode: forwards;
+    opacity: 0;
+
+}
+
+.secondHeader>span:nth-child(2) {
+    margin-top: -30px;
+    rotate: -5deg;
+    color: #C1112F;
+    animation-name: zoom-in-rotated;
+    animation-delay: 3s;
+    animation-duration: .4s;
+    animation-fill-mode: forwards;
+    opacity: 0;
+}
+
+.gameOptions {
+    display: grid;
+    grid-template-areas: 'question question'
+        'solo twoplayers';
+    gap: 50px;
+}
+
+.gameOptions>span {
+    grid-area: question;
+    font-size: 50px;
+}
+
+.solo {
+    border-radius: 10px;
+    padding: 10px;
+    background-color: #00074B;
+    color: white;
+    grid-area: solo;
+    font-size: 30px;
+}
+
+.game {
+    display:flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.scoreboard {
+    width:300px;
+    padding-bottom: 20px;
+    border-radius: 10px;
+    background-color: #00074B;
+    display: none;
+    grid-template-areas: 'title title'
+        'playerOneName playerTwoName'
+        'playerOneScore playerTwoScore';
+    gap: 10px;
+}
+
+.scoreboardTitle {
+    padding: 20px 20px 10px;
+    border-radius: 10px 10px 0 0;
+    font-size: 30px;
+    background-color: #C1112F;
+    grid-area: title;
+}
+
+.scoreboardFirstPlayerHeader {
+    padding: 20px 20px 10px;
+    text-transform: capitalize;
+    font-size: 20px;
+    grid-area: playerOneName;
+}
+
+.scoreboardFirstPlayerScore {
+    font-size: 30px;
+    grid-area: playerOneScore;
+}
+
+.scoreboardSecondPlayerHeader {
+    padding: 20px 20px 10px;
+    font-size: 20px;
+    grid-area: playerTwoName;
+}
+
+.scoreboardSecondPlayerScore {
+    font-size: 30px;
+    grid-area: playerTwoScore;
+}
+
+.players {
+    font-size: 4rem;
+    padding: 50px;
+    display:none;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap:20px
+}
+
+.firstPlayer {
+    display: flex;
+    flex-direction: column;
+    padding: 10px;
+    align-items: center;
+    gap: 20px;
+}
+
+.firstPlayer>span {
+    font-size: 4rem;
+}
+
+input {
+    border-radius: 10px;
+    border: 0;
+    box-shadow: 5px 6px 0px 5px black;
+    padding: 15px;
+    width: 50%;
+}
+
+.save {
+    font-family: 'Luckiest Guy', cursive;
+    border-radius: 10px;
+    padding: 10px 20px 10px;
+    background-color: #00074B;
+    color: white;
+    font-size: 30px;
+}
+
+.startGame {
+    display: none;
+    flex-direction: column;
+    align-items: center;
+    gap: 30px;
+    padding: 3rem;
+    font-size: 70px;
+}
+
+.startGame button {
+    font-family: 'Luckiest Guy', cursive;
+    border-radius: 10px;
+    background-color: #00074B;
+    color: white;
+    padding: 20px 20px 10px 20px;
+    font-size: 50px;
+}
+
+.optionButtons {
+    display: none;
+    justify-content: center;
+    align-items: center;
+    grid-template-columns:repeat(5,1fr);
+    gap: 2rem;
+    font-size: 30px;
+}
+
+
+.optionButtons img {
+    width: 200px;
+}
+
+.optionButtons img:hover {
+    transform: scale(1.1);
+}
+
+.optionSelection {
+    display: none;
+    padding: 2rem;
+    font-size: 70px;
+}
+
+.footer {
+    padding: 20px;
+    font-size: 20px;
+}
+
+.footer a {
+    color: #5A6D98;
+    text-decoration: none;
+}
+@media only screen and (max-width: 1050px){
+    .header {
+        font-size: 4rem;
+    }
+    .optionButtons{
+        grid-template-columns: repeat(3,1fr);
+    }
+    .optionButtons img {
+        width:150px;
+    }
+    .optionSelection{
+        font-size: 2.5em;
+    }
+
+    @keyframes zoom-in-rotated {
+        0% {
+            opacity: 1;
+            font-size: 1000px;
+    
+        }
+    
+        100% {
+            opacity: 1;
+            font-size: 4rem;
+        }
+    }
+}
+
+@media only screen and (max-width: 692px){
+    body {
+        justify-content: space-between;
+    }
+    .header {
+        font-size: 3rem;
+    }
+    .secondHeader {
+        padding-top: 10px;
+    }
+    .enterGame button {
+        font-size: 30px;
+    }
+    .players {
+        font-size: 2.7rem;
+    }
+    .optionButtons img {
+        width:120px;
+    }
+    
+    @keyframes zoom-in-rotated {
+        0% {
+            opacity: 1;
+            font-size: 1000px;
+        }
+        100% {
+            opacity: 1;
+            font-size: 3rem;
+        }
+    }
+}
+@media only screen and (max-width: 535px){
+    .header {
+        font-size: 2.7rem;
+    }
+    .secondHeader {
+        padding-top: 10px;
+    }
+    .enterGame {
+        flex-direction: column;
+    }
+    .rules iframe{
+        width:250px;
+        height:450px;
+    }
+    .enterGame button {
+        font-size: 25px;
+    }
+    .optionButtons img {
+        width:100px;
+    }
+    @keyframes zoom-in-rotated {
+        0% {
+            opacity: 1;
+            font-size: 1000px;
+    
+        }
+    
+        100% {
+            opacity: 1;
+            font-size: 2.7rem;
+        }
+    }
+}
+@media only screen and (max-width: 488px){
+    .header {
+        font-size: 2rem;
+    }
+    .secondHeader {
+        padding-top: 20px;
+        gap:10px;
+    }
+    @keyframes zoom-in-rotated {
+        0% {
+            opacity: 1;
+            font-size: 1000px;
+    
+        }
+    
+        100% {
+            opacity: 1;
+            font-size: 2rem;
+        }
+    }
 }

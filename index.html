@@ -1,46 +1,98 @@
 <!DOCTYPE html>
-<html>
-  <head>
-    <title>RockPapperScissorsLizardSpock!</title>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rock, Paper, Scissors, Lizard, Spock</title>
     <link rel="stylesheet" href="css/style.css" />
-  </head>
-  <body>
-      <div class="title">
-        <h1>Rock, Papper, Scissors, Lizard, Spock!</h1>
-      </div>
-    
-    <div class="points">
-        <div class="playernames">Player</div>
-        <div class="playernames">Computer</div>
-        <div id="player">0</div>
-        <div id="computer">0</div>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Luckiest+Guy&display=swap" rel="stylesheet">
+</head>
+
+<body>
+    <div class="header">
+        <div class="firstHeader">
+            <span>Rock</span>
+            <span>Paper</span>
+            <span>Scissors</span>
+        </div>
+        <div class="secondHeader">
+            <span>Lizard</span>
+            <span>Spock</span>
+        </div>
     </div>
-    <div id="messages">
-        <div id="content"> Lets Begin !</div>
+    <div class="main">
+        <div class="enterGame" id="enterGame">
+            <div class="rules">
+                <iframe src="https://www.youtube.com/embed/Ykyp5lCXZ5Q"
+                    title="The Big Bang Theory -  Rock paper scissor lizard spok #lenard #penny #tbbt #shorts"
+                    frameborder="0"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                    allowfullscreen></iframe>
+            </div>
+            <button id="enterGameButton">Enter Game</button>
+        </div>
+        <div class="players" id="players">
+            <span>Tell me, how should we call you ?</span>
+            <input type="text" id="name">
+            <button class="save" id="createPlayer">Save</button>
+        </div>
+        <div class="game">
+            <div class="startGame" id="startGame">
+                Are you ready?
+                <button id="startGameButton">Start Game</button>
+            </div>
+            <div class="scoreboard" id="scoreboard">
+                <div class="scoreboardTitle">
+                    Scoreboard
+                </div>
+                <div class="scoreboardFirstPlayerHeader" id="scoreboardFirstPlayerHeader">
+                    player1
+                </div>
+                <div class="scoreboardFirstPlayerScore" id="scoreboardFirstPlayerScore">
+                    0
+                </div>
+                <div class="scoreboardSecondPlayerHeader">
+                    COM Player
+                </div>
+                <div class="scoreboardSecondPlayerScore" id="scoreboardSecondPlayerScore">
+                    0
+                </div>
+            </div>
+            <div class="optionSelection" id="optionSelection">
+                Choose your option:
+            </div>
+            <div class="optionButtons" id="optionButtons">
+                <div class="rock">
+                    <p>Rock</p>
+                    <img class="option" src="img/rock.svg" id="rock">
+                </div>
+                <div class="papper">
+                    <p>Papper</p>
+                    <img class="option" src="img/papper.svg" id="papper">
+                </div>
+                <div class="scissors">
+                    <p>Scissors</p>
+                    <img class="option" src="img/scissors.svg" id="scissors">
+                </div>
+                <div class="lizard">
+                    <p>Lizard</p>
+                    <img class="option" src="img/lizard.svg" id="lizard">
+                </div>
+                <div class="spock">
+                    <p>Spock</p>
+                    <img class="option" src="img/spock.svg" id="spock">
+                </div>
+            </div>
+        </div>
     </div>
-    <div id="selection">
-        <div>
-            <p>Rock</p>
-            <img class="option" src="img/Rock.png" id="rock">
-        </div>
-        <div>
-            <p>Papper</p>
-            <img class="option" src="img/Papper.png" id="papper">
-        </div>
-        <div>
-            <p>Scissors</p>
-            <img class="option" src="img/Scissors.png" id="scissors">
-        </div>
-        <div>
-            <p>Lizard</p>
-            <img class="option" src="img/Lizard.png" id="lizard">
-        </div>
-        <div>
-            <p>Spock</p>
-            <img class="option" src="img/Spock.png" id="spock">
-        </div>   
+    <div class="footer">
+        Created with ♥️ by <a href="https://github.com/aenema25" target="_blank">Oscar Uribe</a>
     </div>
-    <footer>Created With ♥️ by <a href="https://github.com/aenema25" target="_blank">Oscar Uribe</a></footer>
-    <script src="js/function.js"></script>
-  </body>
+    <script src="js/main.js"></script>
+</body>
+
 </html>
